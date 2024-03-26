@@ -78,8 +78,8 @@ void Triangle()
     
     // 각 세그먼트의 활성화를 결정하기 위한 가중치 계산
     float weight1 = step(0, t) * step(t, 0.3333);
-    float weight2 = step(0.3334, t) * step(t, 0.6666);
-    float weight3 = step(0.6667, t) * step(t, 1.0);
+    float weight2 = step(0.3333, t) * step(t, 0.6666);
+    float weight3 = step(0.6666, t) * step(t, 1.0);
     
     // 최종 위치 결정
     vec3 position = pos1 * weight1 + pos2 * weight2 + pos3 * weight3;
