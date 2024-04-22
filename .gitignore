@@ -28,6 +28,4 @@
 *.exe
 *.out
 *.app
-**/x64/*
-**/SimpleGame/x64/*
 **/*/.vs/*
