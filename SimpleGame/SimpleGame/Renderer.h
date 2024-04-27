@@ -20,6 +20,7 @@ public:
 	void DrawParticle();
 
 	void DrawParticleCloud();
+	void DrawTextrueSandbox();
 
 private:
 	void Initialize(int windowSizeX, int windowSizeY);
@@ -28,6 +29,7 @@ private:
 	GLuint CompileShaders(char* filenameVS, char* filenameFS);
 	void CreateVertexBufferObjects();
 	void GetGLPosition(float x, float y, float *newX, float *newY);
+	GLuint CreatePngTexture(char* filePath, GLuint samplingMethod);
 
 	void CreateParticlesCloud(int numParticles);
 
@@ -46,5 +48,11 @@ private:
 	GLuint m_ParticleCloudVBO = 0;
 	GLuint m_ParticleCloudVertexCount = 0;
 	float m_ParticleTime = 0.f;
+
+	GLuint m_TextureSandboxShader = 0;
+	GLuint m_TextureSandboxVBO = 0;
+	float m_TextureSandboxTime = 0;
+
+	GLuint m_RGBTexture = 0;
 };
 

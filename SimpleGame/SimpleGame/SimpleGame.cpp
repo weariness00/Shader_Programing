@@ -24,7 +24,8 @@ void RenderScene(void)
 
 	// Renderer Test
 	// g_Renderer->DrawParticleCloud();
-	g_Renderer->DrawParticle();
+	//g_Renderer->DrawParticle();
+	g_Renderer->DrawTextrueSandbox();
 
 	glutSwapBuffers();
 }

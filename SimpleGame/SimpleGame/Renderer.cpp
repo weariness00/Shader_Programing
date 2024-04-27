@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Renderer.h"
+#include "LoadPng.h"
 
 Renderer::Renderer(int windowSizeX, int windowSizeY)
 {
@@ -23,10 +24,15 @@ void Renderer::Initialize(int windowSizeX, int windowSizeY)
 	//Load shaders
 	m_ParticleShader = CompileShaders("./Shaders/Particle.vs", "./Shaders/Particle.fs");
 
+	m_TextureSandboxShader = CompileShaders("./Shaders/TextureSandbox.vs", "./Shaders/TextureSandbox.fs");
+
 	//Create VBOs
 	CreateVertexBufferObjects();
 
 	CreateParticlesCloud(1000);
+
+	//Create RGB Texture
+	m_RGBTexture = CreatePngTexture("./rgb.png", GL_NEAREST);
 
 	if (m_SolidRectShader > 0 && m_VBORect > 0)
 	{
@@ -61,7 +67,7 @@ void Renderer::CreateVertexBufferObjects()
 	glBindBuffer(GL_ARRAY_BUFFER, m_TestVBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	float size = 0.05f;
+	float size = 0.5f;
 
 	float particleVerts[] = {
 		 size,  size, 0.0,
@@ -75,6 +81,21 @@ void Renderer::CreateVertexBufferObjects()
 	glGenBuffers(1, &m_ParticleVBO);
 	glBindBuffer(GL_ARRAY_BUFFER, m_ParticleVBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(particleVerts), particleVerts, GL_STATIC_DRAW);
+
+	//TextureSandBox
+	float TexturesandboxVerts[] =
+	{
+	   -size,   -size,   0, 0.0f, 1.0f,
+	   size,    size,   0, 1.0f, 0.0f,
+	   -size,   size,   0, 0.0f, 0.0f,
+	   -size,   -size,   0, 0.0f, 1.0f,
+	   size,    -size,   0, 1.0f, 1.0f,
+	   size,   size,   0, 1.0f, 0.0f
+	};
+
+	glGenBuffers(1, &m_TextureSandboxVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, m_TextureSandboxVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(TexturesandboxVerts), TexturesandboxVerts, GL_STATIC_DRAW);
 
 }
 
@@ -218,6 +239,33 @@ void Renderer::GetGLPosition(float x, float y, float *newX, float *newY)
 	*newY = y * 2.f / m_WindowSizeY;
 }
 
+GLuint Renderer::CreatePngTexture(char* filePath, GLuint samplingMethod)
+{
+	//Load Png
+	std::vector<unsigned char> image;
+	unsigned width, height;
+	unsigned error = lodepng::decode(image, width, height, filePath);
+
+	if (error != 0)
+	{
+		std::cout << "PNG image loading failed:" << filePath << std::endl;
+		//assert(0);
+	}
+
+	GLuint temp;
+
+	glGenTextures(1, &temp);
+
+	glBindTexture(GL_TEXTURE_2D, temp);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA,GL_UNSIGNED_BYTE, &image[0]);
+
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, samplingMethod);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, samplingMethod);
+
+	return temp;
+}
+
+
 void Renderer::CreateParticlesCloud(int numParticles)
 {
 	float centerX, centerY;
@@ -312,7 +360,6 @@ void Renderer::DrawParticleCloud()
 	GLuint shader = m_ParticleShader;
 	glUseProgram(shader);
 
-
 	m_ParticleTime += 0.016;
 
 	int attribPosition = glGetAttribLocation(shader, "a_Position");
@@ -328,4 +375,39 @@ void Renderer::DrawParticleCloud()
 
 	glDisableVertexAttribArray(attribPosition);
 
+}
+
+void Renderer::DrawTextrueSandbox()
+{
+	//Program select
+	GLuint shader = m_TextureSandboxShader;
+
+	glUseProgram(shader);
+
+	int cnt = 5;   // 0~2:Pos 3~4:UV
+
+	int attribPosition = glGetAttribLocation(shader, "a_Position");
+	glEnableVertexAttribArray(attribPosition);
+	glBindBuffer(GL_ARRAY_BUFFER, m_TextureSandboxVBO);
+	glVertexAttribPointer(attribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(float) * cnt, 0);
+
+	int attribTexPos = glGetAttribLocation(shader, "a_Texture");
+	glEnableVertexAttribArray(attribTexPos);
+	glBindBuffer(GL_ARRAY_BUFFER, m_TextureSandboxVBO);
+	glVertexAttribPointer(attribTexPos, 2, GL_FLOAT, GL_FALSE, sizeof(float) * cnt, (GLvoid*)(sizeof(float) * 3));
+
+	GLuint uTimeID = glGetUniformLocation(shader, "u_Time");
+	float timeScale = 0.016f;
+	m_TextureSandboxTime += timeScale;
+	glUniform1f(uTimeID, m_TextureSandboxTime);
+
+	GLuint ul_Texture = glGetUniformLocation(shader, "uTextureSampler");
+	glUniform1i(ul_Texture, 0);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, m_RGBTexture);
+
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 6);
+	glDisableVertexAttribArray(attribPosition);
+
+	glDisable(GL_BLEND);
 }
