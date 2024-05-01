@@ -19,15 +19,32 @@ Renderer *g_Renderer = NULL;
 
 void RenderScene(void)
 {
+	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	//glClearColor(0.0f, 0.3f, 0.3f, 1.0f);
+
+	//// Renderer Test
+	////g_Renderer->DrawParticleCloud();
+	//g_Renderer->DrawParticle();
+	////g_Renderer->DrawTextrueSandbox();
+
+	//glutSwapBuffers();
+}
+
+void RenderSceneTimer(int value)
+{
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(0.0f, 0.3f, 0.3f, 1.0f);
 
 	// Renderer Test
-	// g_Renderer->DrawParticleCloud();
+	//g_Renderer->DrawParticleCloud();
 	//g_Renderer->DrawParticle();
-	g_Renderer->DrawTextrueSandbox();
+	//g_Renderer->DrawFSSandbox();
+	g_Renderer->DrawGridMesh();
+
+	//g_Renderer->DrawTextrueSandbox();
 
 	glutSwapBuffers();
+	glutTimerFunc(16, RenderSceneTimer, 1);
 }
 
 void Idle(void)
@@ -81,6 +98,8 @@ int main(int argc, char **argv)
 	glutKeyboardFunc(KeyInput);
 	glutMouseFunc(MouseInput);
 	glutSpecialFunc(SpecialKeyInput);
+	glutTimerFunc(16, RenderSceneTimer, 1);
+
 
 	glutMainLoop();
 
