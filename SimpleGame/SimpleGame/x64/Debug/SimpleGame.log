@@ -1,9 +1,60 @@
-﻿  Renderer.cpp
-D:\MyGitHub\Shader_Programing\SimpleGame\SimpleGame\Renderer.cpp(134,21): warning C4267: '=': 'size_t'에서 'GLint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\MyGitHub\Shader_Programing\SimpleGame\SimpleGame\Renderer.cpp(282,56): warning C4244: '인수': 'GLuint'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\MyGitHub\Shader_Programing\SimpleGame\SimpleGame\Renderer.cpp(283,56): warning C4244: '인수': 'GLuint'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\MyGitHub\Shader_Programing\SimpleGame\SimpleGame\Renderer.cpp(460,25): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
-D:\MyGitHub\Shader_Programing\SimpleGame\SimpleGame\Renderer.cpp(483,25): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
-D:\MyGitHub\Shader_Programing\SimpleGame\SimpleGame\Renderer.cpp(540,26): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
-D:\MyGitHub\Shader_Programing\SimpleGame\SimpleGame\Renderer.cpp(562,25): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
-  SimpleGame.vcxproj -> D:\MyGitHub\Shader_Programing\SimpleGame\x64\Debug\SimpleGame.exe
+﻿  stdafx.cpp
+  LoadPng.cpp
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\LoadPng.cpp(800,10): warning C4334: '<<': 32비트 시프트의 결과가 암시적으로 64비트로 변환됩니다. 64비트 시프트를 사용하시겠습니까?
+  (소스 파일 '/LoadPng.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\LoadPng.cpp(1462,24): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/LoadPng.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\LoadPng.cpp(1466,26): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/LoadPng.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\LoadPng.cpp(1538,29): warning C4267: '=': 'size_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/LoadPng.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\LoadPng.cpp(3483,23): warning C4334: '<<': 32비트 시프트의 결과가 암시적으로 64비트로 변환됩니다. 64비트 시프트를 사용하시겠습니까?
+  (소스 파일 '/LoadPng.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\LoadPng.cpp(3497,50): warning C4267: '인수': 'size_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/LoadPng.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\LoadPng.cpp(4338,24): warning C4267: '=': 'size_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/LoadPng.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\LoadPng.cpp(4386,24): warning C4267: '=': 'size_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/LoadPng.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\LoadPng.cpp(4466,24): warning C4267: '=': 'size_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/LoadPng.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\LoadPng.cpp(5409,23): warning C4267: '초기화 중': 'size_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/LoadPng.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\LoadPng.cpp(6296,22): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  (소스 파일 '/LoadPng.cpp'을(를) 컴파일하는 중)
+  
+  Renderer.cpp
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\Renderer.cpp(134,21): warning C4267: '=': 'size_t'에서 'GLint'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/Renderer.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\Renderer.cpp(282,56): warning C4244: '인수': 'GLuint'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/Renderer.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\Renderer.cpp(283,56): warning C4244: '인수': 'GLuint'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  (소스 파일 '/Renderer.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\Renderer.cpp(460,25): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+  (소스 파일 '/Renderer.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\Renderer.cpp(483,25): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+  (소스 파일 '/Renderer.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\Renderer.cpp(540,26): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+  (소스 파일 '/Renderer.cpp'을(를) 컴파일하는 중)
+  
+D:\GItData\Shader_Programing\SimpleGame\SimpleGame\Renderer.cpp(562,25): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+  (소스 파일 '/Renderer.cpp'을(를) 컴파일하는 중)
+  
+  SimpleGame.cpp
+  코드를 생성하고 있습니다...
+  SimpleGame.vcxproj -> D:\GItData\Shader_Programing\SimpleGame\x64\Debug\SimpleGame.exe
